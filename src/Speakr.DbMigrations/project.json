@@ -1,0 +1,12 @@
+﻿{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "FluentMigrator.Runner.Cli.Executor": "1.0.0-*"
+    },
+    "frameworks": {
+        "net461": {}
+    },
+    "tools": {
+        "FluentMigrator.Runner.Cli": "1.0.0-*"
+    }
+}
