@@ -8,40 +8,41 @@ namespace Speakr.DbMigrations
     {
         public override void Up()
         {
-            Create.Table("Talk")
+            Create.Table("Talks")
                 .WithColumn("TalkID").AsString(32).NotNullable().PrimaryKey()
-                .WithColumn("TalkName").AsString()
+                .WithColumn("TalkName").AsString().NotNullable()
                 .WithColumn("Topic").AsString()
                 .WithColumn("Description").AsString()
+                .WithColumn("SpeakerID").AsGuid().NotNullable()
                 .WithColumn("QuestionnaireID").AsGuid().NotNullable().ForeignKey()
                 .WithColumn("TalkCreationTime").AsDateTime()
                 .WithColumn("TalkStartTime").AsDateTime();
 
-            Create.Table("Questionnaire")
+            Create.Table("Questionnaires")
                 .WithColumn("QuestionnaireID").AsString().ReferencedBy("Talk", "QuestionnaireID")
                 .WithColumn("Questions").AsString(Int32.MaxValue);
 
-            Create.Table("Feedback")
+            Create.Table("Feedbacks")
                 .WithColumn("TalkID").AsString(32).NotNullable().ForeignKey()
                 .WithColumn("Responses").AsString(Int32.MaxValue);
 
-            Create.Table("Speaker")
+            Create.Table("Speakers")
                 .WithColumn("SpeakerID").AsGuid().NotNullable().PrimaryKey()
                 .WithColumn("FirstName").AsString().NotNullable()
                 .WithColumn("LastName").AsString().NotNullable();
 
-            Create.Table("SpeakerEmail")
+            Create.Table("SpeakerEmails")
                 .WithColumn("SpeakerID").AsGuid().NotNullable().PrimaryKey()
                 .WithColumn("EmailAddress").AsString().NotNullable();
         }
 
         public override void Down()
         {
-            Delete.Table("Talk");
-            Delete.Table("Questionnaire");
-            Delete.Table("Feedback");
-            Delete.Table("Speaker");
-            Delete.Table("SpeakerEmail");
+            Delete.Table("Talks");
+            Delete.Table("Questionnaires");
+            Delete.Table("Feedbacks");
+            Delete.Table("Speakers");
+            Delete.Table("SpeakerEmails");
         }
     }
 }
