@@ -1,15 +1,12 @@
 ﻿using FluentMigrator;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Speakr.DbMigrations
 {
     [Migration(1)]
-    public class CreateTalksTable : Migration
+    public class InitialMigration2 : Migration
     {
-        public override void Down()
+        public override void Up()
         {
             Create.Table("Talk")
                 .WithColumn("TalkID").AsString(32).NotNullable().PrimaryKey()
@@ -41,7 +38,7 @@ namespace Speakr.DbMigrations
                 .WithColumn("Answer").AsString(Int32.MaxValue);
         }
 
-        public override void Up()
+        public override void Down()
         {
             Delete.Table("Talk");
             Delete.Table("Questionnaire");
