@@ -20,11 +20,7 @@ namespace Speakr.DbMigrations
 
             Create.Table("Questionnaires")
                 .WithColumn("QuestionnaireID").AsString().ReferencedBy("Talk", "QuestionnaireID")
-                .WithColumn("Questions").AsString(Int32.MaxValue);
-
-            Create.Table("Feedbacks")
-                .WithColumn("TalkID").AsString(32).NotNullable().ForeignKey()
-                .WithColumn("Responses").AsString(Int32.MaxValue);
+                .WithColumn("Questionnaire").AsString(Int32.MaxValue);
 
             Create.Table("Speakers")
                 .WithColumn("SpeakerID").AsGuid().NotNullable().PrimaryKey()
@@ -34,6 +30,10 @@ namespace Speakr.DbMigrations
             Create.Table("SpeakerEmails")
                 .WithColumn("SpeakerID").AsGuid().NotNullable().PrimaryKey()
                 .WithColumn("EmailAddress").AsString().NotNullable();
+
+            Create.Table("Feedbacks")
+                .WithColumn("TalkID").AsString(32).NotNullable().ForeignKey()
+                .WithColumn("Feedback").AsString(Int32.MaxValue);
         }
 
         public override void Down()

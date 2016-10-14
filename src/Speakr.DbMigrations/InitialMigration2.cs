@@ -11,6 +11,8 @@ namespace Speakr.DbMigrations
             Create.Table("Talks")
                 .WithColumn("TalkID").AsString(32).NotNullable().PrimaryKey()
                 .WithColumn("TalkName").AsString()
+                .WithColumn("Topic").AsString()
+                .WithColumn("Description").AsString()
                 .WithColumn("SpeakerID").AsGuid().NotNullable()
                 .WithColumn("QuestionnaireID").AsGuid().NotNullable().ForeignKey()
                 .WithColumn("TalkCreationTime").AsDateTime()
@@ -18,7 +20,7 @@ namespace Speakr.DbMigrations
 
             Create.Table("Questionnaires")
                 .WithColumn("QuestionnaireID").AsString().ReferencedBy("Talk", "QuestionnaireId")
-                .WithColumn("Questions").AsString(Int32.MaxValue);
+                .WithColumn("Questionnaire").AsString(Int32.MaxValue);
 
             Create.Table("Speakers")
                 .WithColumn("SpeakerID").AsGuid().NotNullable().PrimaryKey()
