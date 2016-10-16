@@ -4,7 +4,7 @@
 This project setups DB migrations for the Speakr project
 You will need to do some setup in order to be able to run the API's code locally.
 
-Setup:
+## Setup: </br>
 1. Install MySql workbench (recommended), you will need the MySql engine.
 2. Run the following command in an administrator command prompt (windows). You can change the username and password, but it *should* be fine for local dev:
 ```
