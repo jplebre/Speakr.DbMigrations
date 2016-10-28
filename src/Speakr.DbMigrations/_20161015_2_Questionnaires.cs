@@ -9,21 +9,21 @@ namespace Speakr.DbMigrations
         public override void Up()
         {
             Create.Table("Questionnaires")
-                .WithColumn("QuestionnaireID").AsInt64().NotNullable().PrimaryKey().Identity()
+                .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
                 .WithColumn("Questionnaire").AsString(Int32.MaxValue);
 
             Create.Table("Feedback")
-                .WithColumn("FeedbackId").AsInt64().NotNullable().PrimaryKey().Identity()
-                .WithColumn("TalkID").AsGuid().NotNullable()
+                .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
+                .WithColumn("TalkId").AsGuid().NotNullable()
                 .WithColumn("Answer").AsString(Int32.MaxValue);
 
-            Create.Column("QuestionnaireID").OnTable("Talks").AsInt64()
-                .ForeignKey("Questionnaires", "QuestionnaireID");
+            Create.Column("QuestionnaireId").OnTable("Talks").AsInt64()
+                .ForeignKey("Questionnaires", "Id");
         }
 
         public override void Down()
         {
-            Delete.Column("QuestionnaireID").FromTable("Talks");
+            Delete.Column("QuestionnaireId").FromTable("Talks");
 
             Delete.Table("Questionnaires");
             Delete.Table("Feedback");

@@ -8,9 +8,9 @@ namespace Speakr.DbMigrations
         public override void Up()
         {
             Create.Table("Talks")
-                .WithColumn("TalkID").AsInt64().PrimaryKey().Identity()
-                .WithColumn("TalkEasyAccessKey").AsString(32).NotNullable()
-                .WithColumn("TalkName").AsString()
+                .WithColumn("Id").AsInt64().PrimaryKey().Identity()
+                .WithColumn("EasyAccessKey").AsString(32).NotNullable()
+                .WithColumn("Name").AsString()
                 .WithColumn("Topic").AsString()
                 .WithColumn("Description").AsString()
                 .WithColumn("SpeakerName").AsString()
