@@ -12,9 +12,10 @@ namespace Speakr.DbMigrations
                 .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
                 .WithColumn("Questionnaire").AsString(Int32.MaxValue);
 
-            Create.Table("Feedback")
+            Create.Table("Reviews")
                 .WithColumn("Id").AsInt64().NotNullable().PrimaryKey().Identity()
-                .WithColumn("TalkId").AsGuid().NotNullable()
+                .WithColumn("TalkId").AsInt64()
+                .WithColumn("SubmissionTime").AsDateTime()
                 .WithColumn("Answer").AsString(Int32.MaxValue);
 
             Create.Column("QuestionnaireId").OnTable("Talks").AsInt64()
@@ -26,7 +27,7 @@ namespace Speakr.DbMigrations
             Delete.Column("QuestionnaireId").FromTable("Talks");
 
             Delete.Table("Questionnaires");
-            Delete.Table("Feedback");
+            Delete.Table("Reviews");
         }
     }
 }
